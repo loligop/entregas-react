@@ -15,7 +15,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <NavBar />
-        <ItemListContainer />
+        <ItemListContainer greeting='Lolo' />
       </header>
       <div>
     <FontAwesomeIcon icon="check-square" />
