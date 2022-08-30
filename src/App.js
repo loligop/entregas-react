@@ -4,9 +4,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.css';
 import ItemListContainer from './components/ItemListContainer';
-
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ItemCount from './components/ItemCount';
 
 
 function App() {
@@ -16,10 +14,9 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <NavBar />
         <ItemListContainer greeting='Lolo' />
+        <ItemCount stock='5' initial='1' />
       </header>
       <div>
-    <FontAwesomeIcon icon="check-square" />
-    Your <FontAwesomeIcon icon="coffee" /> is hot and ready!
   </div>
     </div>
     
