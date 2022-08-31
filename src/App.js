@@ -5,7 +5,7 @@ import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.css';
 import ItemListContainer from './components/ItemListContainer';
 import ItemCount from './components/ItemCount';
-
+import ItemList from './components/ItemList';
 
 function App() {
   return (
@@ -14,8 +14,9 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <NavBar />
         <ItemListContainer greeting='Lolo' />
-        <ItemCount stock='5' initial='1' />
       </header>
+      <ItemCount stock='5' initial='1' />
+      <ItemList />
       <div>
   </div>
     </div>
