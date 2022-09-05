@@ -1,14 +1,10 @@
-// function Item({ item }) {
-//     // Desarrolla la vista de un ítem donde item es de tipo
-//     // { id, title, price, pictureUrl }
-//    }
 import * as React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 const Item = ({ item }) => {
 	return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem' }} className='col-3 m-2'>
         <Button variant="transparent" href={item.image}>
             <Card.Img variant="top" src={item.image} />
         </Button>

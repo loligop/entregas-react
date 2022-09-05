@@ -1,26 +1,33 @@
-// function ItemList({ items }) {
-//     // El componente va a recibir una prop `items` y va a mapear estos `items` al componente `<Item … />`
-//    }
-   import React, { useState, useEffect } from 'react';
-   import Item from './Item';
-   
-   const ItemList = () => {
-       const [items, setItems] = useState([]);
-   
-       useEffect(() => {
-           fetch('https://fakestoreapi.com/products')
-               .then((response) => response.json())
-               .then((json) => setItems(json));
-       }, []);
-   
-       return (
-           <div>
-               {items.map((product) => {
-                   return <Item key={product.id} item={product} />;
-               })}
-           </div>
-       );
-   };
-   
-   export default ItemList;
-   
+import React, { useState, useEffect } from 'react';
+import Item from './Item';
+
+const ItemList = () => {
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        const getData = new Promise(resolve => {
+            setTimeout(() => {
+                fetch('https://fakestoreapi.com/products')
+                .then((response) => response.json())
+                .then((json) => setItems(json));
+            }, 5000);
+        
+        });
+        getData.then(res => setItems(res));
+        
+    }, []);
+
+    return (
+        <div className='row'>
+            <div className='col-12'>
+                <div className='row justify-content-center'>
+                    {items.map((product) => {
+                        return <Item key={product.id} item={product} />;
+                    })}
+                </div>
+            </div>
+        </div>
+        );
+};
+
+export default ItemList;
