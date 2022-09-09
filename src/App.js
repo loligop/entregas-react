@@ -7,22 +7,29 @@ import ItemListContainer from './components/ItemListContainer';
 import ItemCount from './components/ItemCount';
 import ItemList from './components/ItemList';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import { Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <Link to="/"><img src={logo} className="App-logo" alt="logo" /></Link>
+        
         <NavBar />
-        <ItemListContainer greeting='Lolo' />
+        <Routes>
+          <Route path='/' element={<ItemListContainer greeting='Lolo' />}/>
+          <Route path='/category' element={<ItemList />}/>
+          <Route path='/detail/:id' element={<ItemDetailContainer />}/>
+        </Routes>
       </header>
-      <ItemDetailContainer />
+      
       <ItemCount stock='5' initial='1' />
-      <ItemList />
       <div>
   </div>
     </div>
-    
+    </BrowserRouter>
   );
 }
 

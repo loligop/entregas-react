@@ -32,7 +32,13 @@
   font-weight: bold;
   color: #61dafb;
 }
-
+.card-body{
+  color: #000!important;
+}
+.Link{
+  text-decoration: none;
+  color: #333;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
