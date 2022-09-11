@@ -4,9 +4,9 @@ import './App.css';
 import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.css';
 import ItemListContainer from './components/ItemListContainer';
-import ItemCount from './components/ItemCount';
 import ItemList from './components/ItemList';
 import ItemDetailContainer from './components/ItemDetailContainer';
+import Cart from './components/Cart';
 import { Link } from 'react-router-dom';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
@@ -22,10 +22,10 @@ function App() {
           <Route path='/' element={<ItemListContainer greeting='Lolo' />}/>
           <Route path='/category' element={<ItemList />}/>
           <Route path='/detail/:id' element={<ItemDetailContainer />}/>
+          <Route path='/cart' element={<Cart />}/>
         </Routes>
       </header>
       
-      <ItemCount stock='5' initial='1' />
       <div>
   </div>
     </div>
