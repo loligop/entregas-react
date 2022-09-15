@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import ItemDetail from "./ItemDetail"
 
 const ItemDetailContainer = () => {
-	const [data, setItems] = useState([]);
+	const [items, setItems] = useState([]);
 
 	let { id } = useParams();
 
@@ -15,10 +15,10 @@ const ItemDetailContainer = () => {
 	}, [id]);
     return (
 		<div>
-			{data.map((item) => {
+			{items.map((item) => {
 				return (
 					<div>
-						<ItemDetail item={item} />
+						<ItemDetail item={item} key={id} />
 					</div>
 				);
 			})}

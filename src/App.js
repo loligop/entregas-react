@@ -9,6 +9,7 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
 import { Link } from 'react-router-dom';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { useCartContext } from './context/CartContext';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       <Link to="/"><img src={logo} className="App-logo" alt="logo" /></Link>
-        
+      <useCartContext>
         <NavBar />
         <Routes>
           <Route path='/' element={<ItemListContainer greeting='Lolo' />}/>
@@ -24,10 +25,11 @@ function App() {
           <Route path='/detail/:id' element={<ItemDetailContainer />}/>
           <Route path='/cart' element={<Cart />}/>
         </Routes>
+        </useCartContext>
       </header>
       
       <div>
-  </div>
+    </div>
     </div>
     </BrowserRouter>
   );

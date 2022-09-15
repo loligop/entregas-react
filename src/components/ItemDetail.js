@@ -8,7 +8,7 @@ const ItemDetail = ({ item }) => {
 
     const onAdd = (counter) => {
         setGoToCart(true);
-        alert('Usted agregó ' + counter + ' productos al carrito.');
+        console.log('Usted agregó ' + counter + ' del ítem ' + item.name);
     };
 
     console.log(goToCart);
