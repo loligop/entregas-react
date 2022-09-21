@@ -1,28 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router';
-import ItemDetail from "./ItemDetail"
+import React, { useEffect, useState } from 'react';
+import DBproducts from '../db/DBproducts';
+import ItemDetail from './ItemDetail';
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
-const ItemDetailContainer = () => {
-	const [items, setItems] = useState([]);
-
-	let { id } = useParams();
-
-	useEffect(() => {
-		axios(`https://breakingbadapi.com/api/characters/${id}`)
-        .then((res) => setItems(res.data)
-		);
-	}, [id]);
-    return (
-		<div>
-			{items.map((item) => {
-				return (
-					<div>
-						<ItemDetail item={item} key={id} />
-					</div>
-				);
-			})}
-		</div>
-	);
+function getProducto(itemid) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (itemid) {
+            const arrayFiltered = DBproducts.find((item) => {
+                return item.id === itemid;
+            });
+            resolve(arrayFiltered);
+            } else {
+            resolve(DBproducts);
+            }
+        }, 2000);
+    });
 }
-export default ItemDetailContainer
+
+function ItemDetailContainer( {greeting, items} ) {
+    const [producto, setProducto] = useState([]);
+    const { itemid } = useParams();
+    useEffect(() => {
+    getProducto(parseInt(itemid)).then(respuestaPromise => {
+        setProducto(respuestaPromise);
+    });
+    }, [itemid]);
+
+    return (
+        <section id="menu" className="py-5 text-center container">
+            <Link to="/"><FontAwesomeIcon icon={faChevronLeft} size="1x" /> Volver al catálogo</Link>
+            <div className="p-5">
+                <div className="container">
+                    <div className="">
+                        <ItemDetail detalle={producto} />
+                    </div>
+                </div>
+            </div>
+        </section>
+        );
+    }
+    
+    export default ItemDetailContainer;

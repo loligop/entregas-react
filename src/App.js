@@ -1,37 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
-
-import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.css';
+import NavBar from './components/NavBar'
 import ItemListContainer from './components/ItemListContainer';
-import ItemList from './components/ItemList';
-import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
-import { Link } from 'react-router-dom';
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { useCartContext } from './context/CartContext';
+import ItemDetailContainer from './components/ItemDetailContainer';
+import { BrowserRouter, Route, Routes }  from 'react-router-dom';
+import { CartContextProvider } from './context/CartContext';
 
 function App() {
   return (
-    <BrowserRouter>
-    <div className="App">
-      <header className="App-header">
-      <Link to="/"><img src={logo} className="App-logo" alt="logo" /></Link>
-      <useCartContext>
+    <CartContextProvider>
+      <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path='/' element={<ItemListContainer greeting='Lolo' />}/>
-          <Route path='/category' element={<ItemList />}/>
-          <Route path='/detail/:id' element={<ItemDetailContainer />}/>
-          <Route path='/cart' element={<Cart />}/>
+          <Route path="/detail/:itemid" element={<ItemDetailContainer />} />  
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/cart" element={<Cart/>} />
+          <Route path="/category/:categoryid" element={<ItemListContainer/>} />
         </Routes>
-        </useCartContext>
-      </header>
-      
-      <div>
-    </div>
-    </div>
-    </BrowserRouter>
+      </BrowserRouter>
+      </CartContextProvider>
   );
 }
 

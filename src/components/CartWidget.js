@@ -1,13 +1,19 @@
-import cartIcon from '../assets/cart-icon.png';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import useCartContext from '../context/CartContext';
 
-function CartWidget() {
-    return (
-        <Link type="button" className="btn btn-light"  to='/cart'>
-            <img src={cartIcon} className="cartIcon" alt="carrito" width={24} />
-            <span className='cartCounter'>{1}</span>
-        </Link>
-        );
-    }
-
-    export default CartWidget;
+function CartWidget(props) {
+  const { itemsTotal } = useCartContext();
+  return (
+    <Link to="/cart" className="text-dark">
+      <div className="cart-icon">
+        <FontAwesomeIcon icon={faCartShopping} size="2x" color="black" />
+        { itemsTotal()? <div className="mostrar-cantidad">{itemsTotal()}</div>
+        : null }
+      </div>
+    </Link>
+  );
+}
+export default CartWidget;
