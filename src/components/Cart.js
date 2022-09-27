@@ -44,7 +44,7 @@ function Cart() {
                         <Container key={itemCart.id}>
                           <Card className="p-3 mb-3 mr-2 ml-2 text-center">
                             <Card.Title>{itemCart.title} x{itemCart.cant}</Card.Title>
-                            <Card.Img variant="top" src={itemCart.image} />
+                            <Card.Img variant="top" src={itemCart.img} />
                             <Card.Body>
                               <div>
                                 <p>
@@ -70,7 +70,7 @@ function Cart() {
                   <h6><strong>Total de items:</strong> {itemsTotal()}</h6>
                 </div>
                 <div className='col-6'>
-                  <h6><strong>Costo Total:</strong> {precioTotal()} $</h6>
+                  <h6><strong>Costo Total:$ </strong> {precioTotal()}</h6>
                 </div>
                 <div className='col-12'>
                   <Button className="btn btn-danger" onClick={handleVaciar}> Vaciar carrito</Button>

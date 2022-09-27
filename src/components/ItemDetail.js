@@ -15,14 +15,14 @@ function ItemDetail({  detalle } ) {
 
 }
 
-if (detalle.image === undefined) { 
+if (detalle.img === undefined) { 
   return <Spinner animation="border" role="status"> <span className="visually-hidden">Cargando...</span></Spinner>
 }
   return (
     <div className="container">
       <div className="row">
         <div className="col-4">
-          <img src={detalle.image} width="700" heith="250" alt={detalle.title} className="img-fluid" />
+          <img src={detalle.img} width="700" heith="250" alt={detalle.title} className="img-fluid" />
         </div>
         <div className="col-8 text-center">
           <div className="clearfix">
