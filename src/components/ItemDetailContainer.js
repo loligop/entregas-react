@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 // FIREBASE
-import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, query, where, getDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebaseConfig';
 
 // function getProducto(itemid) {
@@ -44,6 +44,19 @@ export async function getItem(id){
         id: itemSnapshot.id
         }
 };
+
+export async function getItemsByCategory(categoryid){
+    const myProducts = collection(db,'products');
+    const queryItem = query(myProducts, where("category", '==', categoryid));
+    const itemSnapshot = await getDocs(queryItem);
+
+    return itemSnapshot.docs.map(doc => {
+        return {
+        ...doc.data(),
+        id: doc.id
+        }
+
+})};
 
 function ItemDetailContainer( {greeting, items} ) {
     const [producto, setProducto] = useState([]);

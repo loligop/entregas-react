@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Card, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-function Item({ item, stock, name, price, description, picture, brand } ) {
+function Item({ item, stock, name, price, description, picture, brand, category } ) {
 	return (
 		<Card className="p-3 mb-3 mr-2 ml-2">
 			<Card.Title>{name}</Card.Title>

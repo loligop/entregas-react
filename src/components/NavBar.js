@@ -1,26 +1,32 @@
 import CartWidget from "./CartWidget";
 import { NavLink } from "react-router-dom"
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const NavBar = () => {
+
+
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid">
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link active" aria-current="page" to="/category">Categoría</NavLink>
-                        </li>
-                    </ul>
-                    <CartWidget />
-                </div>
-            </div>
-        </nav>
+        <Nav variant="pills" activeKey="1">
+            <Nav.Item>
+                <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
+            </Nav.Item>
+            <NavDropdown title="Categorías" id="nav-dropdown">
+                <NavDropdown.Item eventKey="Manoplas">
+                    <NavLink className="nav-link" aria-current="page" to="category/manoplas">Manoplas</NavLink>
+                </NavDropdown.Item>
+                <NavDropdown.Item eventKey="Lentes de Agua">
+                    <NavLink className="nav-link" aria-current="page" to="category/lentes-de-agua">Lentes de Agua</NavLink>
+                </NavDropdown.Item>
+                <NavDropdown.Item eventKey="Tablas">
+                    <NavLink className="nav-link" aria-current="page" to="category/tablas">Tablas</NavLink>
+                </NavDropdown.Item>
+                <NavDropdown.Item eventKey="Pull Buoy">
+                    <NavLink className="nav-link" aria-current="page" to="category/pull-buoy">Pull Buoy</NavLink>
+                </NavDropdown.Item>
+            </NavDropdown>
+            <CartWidget />
+        </Nav>
     )
 }
 export default NavBar;
