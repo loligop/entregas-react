@@ -1,6 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
-
+import { getFirestore, addDoc, Timestamp, collection  } from 'firebase/firestore';
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBZK6iL0iN4LlcBEaRiwbeLP_uAitoMe1s",
@@ -15,3 +14,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
+
+
+export async function createBuyOrder(orderData){
+  const buyTimeStamp = Timestamp.now();
+  const orderWithDate = {
+      ...orderData,
+      date: buyTimeStamp
+  };
+  const myProducts = collection(db,'buyOrders');
+  const orderDoc = await addDoc(myProducts, orderWithDate);
+  console.log("Orden lista con el id ",orderDoc.id);
+  return orderDoc.id;   
+}

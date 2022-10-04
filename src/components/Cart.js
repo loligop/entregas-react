@@ -74,6 +74,7 @@ function Cart() {
                 </div>
                 <div className='col-12'>
                   <Button className="btn btn-danger" onClick={handleVaciar}> Vaciar carrito</Button>
+                  <Link to="/checkout" style={{marginLeft:"20px"} }><Button className="bg-success ml-3">Proceder al pago</Button></Link> 
                 </div>
             </div>
         </section>

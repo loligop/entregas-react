@@ -58,6 +58,7 @@ export async function getItemsByCategory(categoryid){
 
 })};
 
+
 function ItemDetailContainer( {greeting, items} ) {
     const [producto, setProducto] = useState([]);
     const { itemid } = useParams();

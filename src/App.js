@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import NavBar from './components/NavBar'
 import ItemListContainer from './components/ItemListContainer';
 import Cart from './components/Cart';
+import CheckOut from './components/Checkout';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import { BrowserRouter, Route, Routes }  from 'react-router-dom';
 import { CartContextProvider } from './context/CartContext';
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/cart" element={<Cart/>} />
           <Route path="/category/:categoryid" element={<ItemListContainer/>} />
+          <Route path="/checkout" element={<CheckOut />} />
         </Routes>
       </BrowserRouter>
       </CartContextProvider>
