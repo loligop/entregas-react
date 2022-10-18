@@ -9,8 +9,8 @@ function CartWidget(props) {
   return (
     <Link to="/cart" className="text-dark">
       <div className="cart-icon">
-        <FontAwesomeIcon icon={faCartShopping} size="2x" color="black" />
-        { itemsTotal()? <div className="mostrar-cantidad">{itemsTotal()}</div>
+        <FontAwesomeIcon icon={faCartShopping} size="1x" color="black" />
+        { itemsTotal()? <div className="item-counter">{itemsTotal()}</div>
         : null }
       </div>
     </Link>
